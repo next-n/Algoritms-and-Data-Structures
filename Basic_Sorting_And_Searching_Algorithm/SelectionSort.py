@@ -4,6 +4,7 @@ def selectionSort(arr):
 		for i in range(j + 1, len(arr)):
 			if arr[i] < arr[imin]:
 				imin = i
+		arr[imin], arr[j] = arr[j], arr[imin]
 	return arr
 
 
