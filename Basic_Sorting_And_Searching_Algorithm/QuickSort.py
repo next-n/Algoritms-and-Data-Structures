@@ -1,25 +1,22 @@
-def quicksort(arr, low, high):
-	if low < high:
-		pivotposition = partition(arr, low, high)
-		quicksort(arr, low, pivotposition)
-		quicksort(arr, pivotposition + 1, high)
-	return arr
+def quicksort(nums):
+	def helper(head, tail):
+		if head >= tail: return
+		l, r = head, tail
+		m = (r - l) // 2 + l
+		pivot = nums[m]
+		while r >= l:
+			while r >= l and nums[l] < pivot: l += 1
+			while r >= l and nums[r] > pivot: r -= 1
+			if r >= l:
+				nums[l], nums[r] = nums[r], nums[l]
+				l += 1
+				r -= 1
+		helper(head, r)
+		helper(l, tail)
+
+	helper(0, len(nums) - 1)
+	return nums
 
 
-def partition(arr, low, high):
-	pivot = arr[low]
-	pivotpoint = low
-	leftwall = low
-
-	for i in range(low + 1, high):
-		if arr[i] < pivot:
-			arr[i], arr[leftwall] = arr[leftwall], arr[i]
-			pivotpoint = i
-			leftwall += 1
-		arr[pivotpoint], arr[leftwall] = arr[leftwall], arr[pivotpoint]
-
-	return leftwall
-
-
-arr1 = [2, 6, 5, 3, 8, 7, 1, 0]
-print(quicksort(arr1, 0, len(arr1)))
+arr1 = [5, 2, 3, 1]
+print(quicksort(arr1))
