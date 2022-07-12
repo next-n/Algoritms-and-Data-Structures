@@ -2,9 +2,10 @@ def selectionSort(arr):
 	for j in range(len(arr) - 1):
 		imin = j
 		for i in range(j + 1, len(arr)):
-			if arr[i] < arr[imin]:
+			if arr[imin] > arr[i]:
 				imin = i
 		arr[imin], arr[j] = arr[j], arr[imin]
+
 	return arr
 
 
