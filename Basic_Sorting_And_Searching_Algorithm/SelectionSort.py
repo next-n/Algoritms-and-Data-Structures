@@ -9,5 +9,25 @@ def selectionSort(arr):
 	return arr
 
 
+def selectionSort_selectlargest(arr):
+	def helper(a, indx):
+		if not indx:
+			return 0
+		j = helper(a, indx - 1)
+		if arr[j] > arr[indx]:
+			return j
+		return indx
+
+	for i in range(len(arr) - 1, 0, -1):
+		imax = helper(arr, i)
+		arr[i], arr[imax] = arr[imax], arr[i]
+	return arr
+
+
 arr1 = [5, 2, 8, 4]
-print(selectionSort(arr1))
+print(selectionSort_selectlargest(arr1))
+
+
+
+
+

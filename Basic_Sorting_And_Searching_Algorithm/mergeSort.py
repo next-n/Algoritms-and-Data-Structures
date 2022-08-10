@@ -33,3 +33,9 @@ def merge(a, b):
 arr1 = [86, 44, 3, 32, 9]
 
 print(mergeSort(arr1))
+
+a = set()
+a.add(1)
+print(a)
+a.remove(1)
+print(a)
